@@ -123,6 +123,23 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &272092272 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 430196719718894393, guid: ee60de45cdd8ad043a8b8641b8e79e4a, type: 3}
+  m_PrefabInstance: {fileID: 430196720998463279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &272092273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272092272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9bd06c6a23887543a32869279cf634c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &414125354
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +249,7 @@ GameObject:
   - component: {fileID: 621696849}
   m_Layer: 0
   m_Name: Landingpad
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -624,7 +641,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 430196719718894389, guid: ee60de45cdd8ad043a8b8641b8e79e4a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 430196719718894389, guid: ee60de45cdd8ad043a8b8641b8e79e4a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -675,6 +692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Launchpad
       objectReference: {fileID: 0}
+    - target: {fileID: 5187438859999671059, guid: 3a658bf07aa3260488a6148139a407c2, type: 3}
+      propertyPath: m_TagString
+      value: Friendly
+      objectReference: {fileID: 0}
     - target: {fileID: 5187438859999671071, guid: 3a658bf07aa3260488a6148139a407c2, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -685,7 +706,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5187438859999671071, guid: 3a658bf07aa3260488a6148139a407c2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 5187438859999671071, guid: 3a658bf07aa3260488a6148139a407c2, type: 3}
       propertyPath: m_LocalPosition.z
