@@ -17,6 +17,8 @@ public class CollisionHandler : MonoBehaviour
 
     }
 
+    [SerializeField] float delayInSeconds = 1f;
+
     void OnCollisionEnter(Collision other)
     {
         switch (other.gameObject.tag)
@@ -25,15 +27,26 @@ public class CollisionHandler : MonoBehaviour
                 break;
 
             case "Finish":
-                NextLevel();
+                LoadNextLevel();
                 break;
 
             default:
-                ReloadLevel();
+                StartCrashSequence();
                 break;
         }
     }
 
+    void StartCrashSequence()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("ReloadLevel", delayInSeconds);
+    }
+
+    void LoadNextLevel()
+    {
+        GetComponent<Movement>().enabled = false;
+        Invoke("NextLevel", delayInSeconds);
+    }
     void ReloadLevel()
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
