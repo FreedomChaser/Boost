@@ -22,11 +22,10 @@ public class CollisionHandler : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Friendly":
-                Debug.Log("I'm the launchpad.");
                 break;
 
             case "Finish":
-                Debug.Log("I'm the finish pad.");
+                NextLevel();
                 break;
 
             default:
@@ -39,5 +38,16 @@ public class CollisionHandler : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    void NextLevel()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+
+        SceneManager.LoadScene(nextSceneIndex);
     }
 }
