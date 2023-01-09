@@ -5,29 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class CollisionHandler : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] float delayInSeconds = 1f;
+    [SerializeField] AudioClip success;
+    [SerializeField] AudioClip crash;
+
+    AudioSource audioSource;
+
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    [SerializeField] float delayInSeconds = 1f;
 
     void OnCollisionEnter(Collision other)
     {
         switch (other.gameObject.tag)
         {
+
             case "Friendly":
                 break;
 
             case "Finish":
-                LoadNextLevel();
+                StartSuccessSequence();
                 break;
 
             default:
@@ -38,12 +36,14 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
+        audioSource.PlayOneShot(crash);
         GetComponent<Movement>().enabled = false;
         Invoke("ReloadLevel", delayInSeconds);
     }
 
-    void LoadNextLevel()
+    void StartSuccessSequence()
     {
+        audioSource.PlayOneShot(success);
         GetComponent<Movement>().enabled = false;
         Invoke("NextLevel", delayInSeconds);
     }
