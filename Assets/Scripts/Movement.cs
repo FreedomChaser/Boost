@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
     [SerializeField] float mainThrust = 900f;
     [SerializeField] float rotateSpeed = 2f;
     [SerializeField] AudioClip mainEngine;
+    [SerializeField] ParticleSystem mainEngineParticle;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,15 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             rocketRigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+            if (!mainEngineParticle.isPlaying)
+            {
+                mainEngineParticle.Play();
+            }
+            else
+            {
+                mainEngineParticle.Stop();
+            }
+
             if (!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(mainEngine);
