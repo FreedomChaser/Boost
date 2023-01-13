@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Movement : MonoBehaviour
 {
     Rigidbody rocketRigidbody;
@@ -29,24 +30,11 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rocketRigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
-            if (!mainEngineParticle.isPlaying)
-            {
-                mainEngineParticle.Play();
-            }
-            else
-            {
-                mainEngineParticle.Stop();
-            }
-
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(mainEngine);
-            }
+            StartThrusting();
         }
         else
         {
-            audioSource.Stop();
+            ThrustingStopped();
         }
     }
 
@@ -60,6 +48,25 @@ public class Movement : MonoBehaviour
         {
             ApplyRotation(-rotateSpeed);
         }
+    }
+
+    void StartThrusting()
+    {
+        rocketRigidbody.AddRelativeForce(Vector3.up * mainThrust * Time.deltaTime);
+        if (!mainEngineParticle.isPlaying)
+        {
+            mainEngineParticle.Play();
+        }
+
+        if (!audioSource.isPlaying)
+        {
+            audioSource.PlayOneShot(mainEngine);
+        }
+    }
+    private void ThrustingStopped()
+    {
+        audioSource.Stop();
+        mainEngineParticle.Stop();
     }
 
     private void ApplyRotation(float vectorDirection)
